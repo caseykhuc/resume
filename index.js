@@ -1,22 +1,23 @@
-const
-  fs = require('fs'),
-  handlebars = require('handlebars'),
-  handlebarsWax = require('handlebars-wax'),
-  addressFormat = require('address-format'),
-  moment = require('moment'),
-  Swag = require('swag');
+const fs = require("fs"),
+  handlebars = require("handlebars"),
+  handlebarsWax = require("handlebars-wax"),
+  addressFormat = require("address-format"),
+  moment = require("moment"),
+  Swag = require("swag"),
+  { marked } = require("marked");
 
 Swag.registerHelpers(handlebars);
 
 handlebars.registerHelper({
-
   wrapURL: function (url) {
-    const wrappedUrl = '<a href="' + url + '">' + url.replace(/.*?:\/\//g, '') + "</a>";
+    const wrappedUrl =
+      '<a href="' + url + '">' + url.replace(/.*?:\/\//g, "") + "</a>";
     return new handlebars.SafeString(wrappedUrl);
   },
 
   wrapMail: function (address) {
-    const wrappedAddress = '<a href="mailto:' + address + '">' + address + "</a>";
+    const wrappedAddress =
+      '<a href="mailto:' + address + '">' + address + "</a>";
     return new handlebars.SafeString(wrappedAddress);
   },
 
@@ -26,41 +27,57 @@ handlebars.registerHelper({
       city: city,
       subdivision: region,
       postalCode: postalCode,
-      countryCode: countryCode
+      countryCode: countryCode,
     });
 
-    return addressList.join('<br/>');
+    return addressList.join("<br/>");
   },
 
   formatDate: function (date) {
-    return moment(date).format('MMM YYYY');
+    if (moment(date).isAfter(moment.now())) {
+      return moment(date).format("MMM YYYY") + " (Expected)";
+    }
+
+    return moment(date).format("MMM YYYY");
   },
 
   getValueIfDiffFromPrevious: function (array, index, key) {
-    return (array[index - 1] && (array[index][key] === array[index - 1][key])) ? '' : array[index][key];
+    return array[index - 1] && array[index][key] === array[index - 1][key]
+      ? ""
+      : array[index][key];
+  },
+
+  concat: function () {
+    let args = Array.prototype.slice.call(arguments);
+    args.pop();
+    return args.join("");
+  },
+
+  markdown: function (body) {
+    return marked.parse(body);
   },
 });
 
 function render(resume) {
   let dir = __dirname,
-    css = fs.readFileSync(dir + '/style.css', 'utf-8'),
-    resumeTemplate = fs.readFileSync(dir + '/resume.hbs', 'utf-8');
+    css = fs.readFileSync(dir + "/style.css", "utf-8"),
+    resumeTemplate = fs.readFileSync(dir + "/resume.hbs", "utf-8");
 
   let Handlebars = handlebarsWax(handlebars);
 
-  Handlebars.partials(dir + '/views/**/*.{hbs,js}');
-  Handlebars.partials(dir + '/partials/**/*.{hbs,js}');
+  Handlebars.partials(dir + "/views/**/*.{hbs,js}");
+  Handlebars.partials(dir + "/partials/**/*.{hbs,js}");
 
   return Handlebars.compile(resumeTemplate)({
     css: css,
-    resume: resume
+    resume: resume,
   });
 }
 
 module.exports = {
   render: render,
   pdfRenderOptions: {
-    format: 'A4',
-    mediaType: 'print',
+    format: "A4",
+    mediaType: "print",
   },
 };

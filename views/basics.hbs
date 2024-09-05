@@ -1,25 +1,33 @@
 {{#resume.basics}}
-<section id="basics">
+  <section id="basics">
     <h1>{{name}}</h1>
     <div class="contact centered">
-        {{#if email~}}
-        <span class="vertical-separator">{{wrapMail email}}</span>
-        {{~/if}}
-        {{#if phone~}}
+      {{#if phone~}}
         <span class="vertical-separator">{{phone}}</span>
-        {{~/if}}
-        {{#if location~}}
-        <span class="vertical-separator">{{location.city}}, {{location.countryCode}}</span>
-        {{~/if}}
-        {{#if website~}}
+      {{~/if}}
+      {{#if email~}}
+        <span class="vertical-separator">{{wrapMail email}}</span>
+      {{~/if}}
+      {{!-- {{#if location~}}
+        <span class="vertical-separator">{{location.city}},
+          {{location.countryCode}}</span>
+      {{~/if}} --}}
+      {{#if website~}}
         <span class="vertical-separator">{{wrapURL website}}</span>
-        {{~/if}}
+      {{~/if}}
+      {{#if profiles}}
+        {{#each profiles}}
+          <span class="vertical-separator">
+            <a href="{{url}}" title="{{network}}">{{username}}</a>
+          </span>
+        {{/each}}
+      {{/if}}
     </div>
     {{#if summary}}
-    <div class="summary">
-        <h2>Summary</h2>
+      <div class="summary">
+        {{!-- <h2>Summary</h2> --}}
         <p>{{summary}}</p>
-    </div>
+      </div>
     {{/if}}
-</section>
+  </section>
 {{/resume.basics}}

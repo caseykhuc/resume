@@ -1,0 +1,26 @@
+<div class="item-details">
+  {{#if startDate}}
+    {{#if endDate}}
+      <div class="work date">
+        {{formatDate startDate}}
+        -
+        {{formatDate endDate}}{{#if startDate2}}{{#if endDate2}},
+            {{formatDate startDate2}}
+            -
+            {{formatDate endDate2}}{{else}},
+            {{formatDate startDate2}}
+            - Present{{/if}}{{/if}}
+      </div>
+    {{else}}
+      <div class="date">
+        {{formatDate startDate}}
+        - Present
+      </div>
+    {{/if}}
+  {{/if}}
+  {{#if location}}
+    <div class="work item-details-title">
+      {{location}}
+    </div>
+  {{/if}}
+</div>

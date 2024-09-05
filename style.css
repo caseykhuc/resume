@@ -1,12 +1,13 @@
 /* Template level */
 body {
     font-family: Georgia, serif;
-    font-size: 11px;
+    font-size: 13px;
     margin: 24px 48px;
+    line-height: 1.1;
 }
 
 h1 {
-    font-size: 26px;
+    font-size: 1.8em;
     text-align: center;
     margin: 5px;
 }
@@ -14,7 +15,7 @@ h1 {
 h2 {
     border-width: 1px;
     border-style: none none solid none;
-    margin: 10px 0 2.5px 0;
+    margin: 15px 0 2.5px 0;
 }
 
 section {
@@ -27,8 +28,8 @@ ul {
 }
 
 a {
-    text-decoration: none;
     color: black;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .item {
@@ -42,6 +43,8 @@ a {
 
 .item>.item-header>.item-header-title {
     font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.2em;
 }
 
 .item>.item-header>.item-header-subtitle {
@@ -55,6 +58,7 @@ a {
 
 .item>.item-details>.item-details-title {
     font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .clearfix {
@@ -81,8 +85,9 @@ a {
 @media print {
     @page {
         size: portrait;
-        margin: 10mm 25mm;
+        margin: 10mm 15mm;
     }
+
     .resume {
         max-width: 100%;
         border: 0px;
@@ -90,13 +95,39 @@ a {
         box-shadow: none;
         -webkit-box-shadow: none;
     }
+
     body,
     html,
     .resume {
         margin: 0px;
         padding: 0px;
     }
+
     .controls {
         display: none;
     }
+}
+
+.item>.item-details>.date.work {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.item>.item-details>.item-details-title.work {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.highlights {
+    margin-left: 20px;
+}
+
+.highlights p,
+#volunteer .highlights li,
+#skills .item li {
+    margin-block: 8px;
+}
+
+.contact {
+    font-size: 0.8em;
 }

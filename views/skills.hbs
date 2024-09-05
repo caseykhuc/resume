@@ -1,6 +1,7 @@
 {{#if resume.skills.length}}
 <section id="skills">
-    <h2>Skills</h2>
+    <h2>Technical Skills</h2>
+    
     <ul class="item">
         {{#each resume.skills}}
         <li>
@@ -8,7 +9,8 @@
             {{#if keywords.length}}
             <strong>{{name}}</strong>: {{#each keywords}}{{.}}{{#unless @last}}, {{/unless}}{{/each}}
             {{else}}
-            <strong>{{name}}</strong>
+            {{!-- <strong>{{name}}</strong> --}}
+            {{name}}
             {{/if}}
             {{/if}}
         </li>

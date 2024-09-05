@@ -1,8 +1,8 @@
 {{#if resume.volunteer.length}}
 <section id="volunteer">
-    <h2>Volunteering</h2>
+    <h2>Projects</h2>
     {{#each resume.volunteer}}
-        {{#> item title=organization subtitle=position location=location startDate=startDate endDate=endDate }}
+        {{#> work-item subtitle=organization title=position location=location startDate=startDate endDate=endDate }}
         {{#if summary}}
         <div class="summary">
             <p>{{summary}}</p>
@@ -16,7 +16,7 @@
             {{/each}}
         </ul>
         {{/if}}
-        {{/item}}
+        {{/work-item}}
     {{/each}}
 </section>
 {{/if}}
