@@ -18,8 +18,8 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0
       marked:
-        specifier: ^14.1.1
-        version: 14.1.1
+        specifier: ^15.0.2
+        version: 15.0.2
       moment:
         specifier: ^2.30.1
         version: 2.30.1
@@ -1170,8 +1170,8 @@ packages:
     resolution: {integrity: sha512-woFl7h/sqt9xRmiMweNuO7nu+w8Lz3SXsDlvE3TYeu1SdPqQ+VW4GZyaKP442Bq6XUN6V6IQjJTR93RDYG2mjw==}
     hasBin: true
 
-  marked@14.1.1:
-    resolution: {integrity: sha512-eS59oxof5eBVDCKTs+mJbvB/6Vq137GbimF9wkTIlto2/B2ppY5nigUUQgKVmA3bI2mPTIshUyDj5j612ZxlQQ==}
+  marked@15.0.2:
+    resolution: {integrity: sha512-85RUkoYKIVB21PbMKrnD6aCl9ws+XKEyhJNMbLn206NyD3jbBo7Ec7Wi4Jrsn4dV1a2ng7K/jfkmIN0DNoS41w==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -3318,7 +3318,7 @@ snapshots:
       mdurl: 1.0.1
       uc.micro: 1.0.6
 
-  marked@14.1.1: {}
+  marked@15.0.2: {}
 
   mdurl@1.0.1: {}
 
